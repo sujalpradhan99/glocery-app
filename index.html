@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Grocery App — Enhanced</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="logo">Home Grocery App</h1>
+
+      <div class="controls-top">
+        <input id="searchInput" placeholder="Search items..." />
+        <select id="filterCategory">
+          <option value="">All categories</option>
+          <option>Vegetables</option>
+          <option>Fruits</option>
+          <option>Dairy</option>
+          <option>Snacks</option>
+          <option>Other</option>
+        </select>
+        <select id="sortSelect">
+          <option value="new">Newest</option>
+          <option value="alpha">A → Z</option>
+          <option value="category">By category</option>
+        </select>
+        <button id="themeToggle" aria-label="Toggle theme">🌓</button>
+      </div>
+
+      <div class="input-row">
+        <input id="itemInput" placeholder="Add grocery item..." />
+        <select id="categorySelect">
+          <option>Vegetables</option>
+          <option>Fruits</option>
+          <option>Dairy</option>
+          <option>Snacks</option>
+          <option>Other</option>
+        </select>
+        <input type="number" id="itemQty" placeholder="Qty" min="1" value="1" />
+        <button id="addBtn">Add</button>
+      </div>
+    </header>
+
+    <div class="controls-row">
+      <button id="selectAll">Select all</button>
+      <button id="deleteSelected">Delete selected</button>
+      <button id="clearPurchased">Clear purchased</button>
+      <button id="exportBtn">Export JSON</button>
+      <input type="file" id="importFile" accept=".json" style="display:none"/>
+      <button id="importBtn">Import JSON</button>
+    </div>
+
+    <main>
+      <section id="listContainer" class="list-section">
+        <h2>Grocery List</h2>
+        <ul id="groceryList"></ul>
+      </section>
+    </main>
+  </div>
+
+  <!-- template -->
+  <template id="itemTpl">
+    <li class="item">
+      <label class="left">
+        <input type="checkbox" class="select-chk" />
+        <input type="checkbox" class="complete-chk" title="Mark purchased" />
+        <span class="text"></span>
+        <small class="cat"></small>
+        <small class="qty"></small>
+      </label>
+      <div class="actions">
+        <button class="btn edit">✎</button>
+        <button class="btn del">✖</button>
+      </div>
+    </li>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
